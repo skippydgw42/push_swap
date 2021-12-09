@@ -1,42 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/08 13:36:56 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/12/08 13:57:00 by mdegraeu         ###   ########lyon.fr   */
+/*   Created: 2021/12/08 16:10:17 by mdegraeu          #+#    #+#             */
+/*   Updated: 2021/12/09 16:24:31 by mdegraeu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "./ft_printf/libftprintf.h"
+#include "/Users/mdegraeu/github/projects/push_swap/push_swap.h"
 
-void	ft_sa(ptr_stack ptr)
+void	ft_ra(ptr_stack ptr)
 {
-	if (ptr.a->size <= 1)
-		return ;
+	int	i;
 	int	c;
 
+	i = 0;
 	c = ptr.a->tab[0];
-	ptr.a->tab[0] = ptr.a->tab[1];
-	ptr.a->tab[1] = c;
+	while (i + 1 < ptr.a->size)
+	{
+		ptr.a->tab[i] = ptr.a->tab[i + 1];
+		i++;
+	}
+	ptr.a->tab[i] = c;
 }
 
-void	ft_sb(ptr_stack ptr)
+void	ft_rb(ptr_stack ptr)
 {
-	if (ptr.b->size <= 1)
-		return ;
+	int	i;
 	int	c;
 
+	i = 0;
 	c = ptr.b->tab[0];
-	ptr.b->tab[0] = ptr.b->tab[1];
-	ptr.b->tab[1] = c;
+	while (i + 1 < ptr.b->size)
+	{
+		ptr.b->tab[i] = ptr.b->tab[i + 1];
+		i++;
+	}
+	ptr.b->tab[i] = c;
 }
 
-void	ft_ss(ptr_stack ptr)
+void	ft_rr(ptr_stack ptr)
 {
-	ft_sa(ptr);
-	ft_sb(ptr);
+	ft_ra(ptr);
+	ft_rb(ptr);
 }

@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_solver.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/26 13:09:14 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/12/08 12:30:44 by mdegraeu         ###   ########lyon.fr   */
+/*   Created: 2021/12/09 12:51:49 by mdegraeu          #+#    #+#             */
+/*   Updated: 2021/12/09 17:42:29 by mdegraeu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "/Users/mdegraeu/github/projects/push_swap/push_swap.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_solver(ptr_stack ptr, int ac)
 {
-	size_t	i;
+	int	i;
+	int	j;
 
 	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	j = 0;
 }

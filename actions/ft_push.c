@@ -6,12 +6,11 @@
 /*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 13:58:00 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/12/08 16:37:14 by mdegraeu         ###   ########lyon.fr   */
+/*   Updated: 2021/12/09 16:24:11 by mdegraeu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "./ft_printf/libftprintf.h"
+#include "/Users/mdegraeu/github/projects/push_swap/push_swap.h"
 
 void	ft_pb(ptr_stack *ptr, int ac)
 {

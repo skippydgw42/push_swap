@@ -6,19 +6,18 @@
 /*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 15:05:27 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/12/07 16:25:06 by mdegraeu         ###   ########lyon.fr   */
+/*   Updated: 2021/12/09 16:25:03 by mdegraeu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "libft.h"
-#include "push_swap.h"
+#include "/Users/mdegraeu/github/projects/push_swap/push_swap.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int	i;
-	int	ct;
-	int	sign;
-	int	result;
+	int		i;
+	int		ct;
+	int		sign;
+	long	result;
 
 	i = 0;
 	ct = 0;

@@ -1,4 +1,4 @@
-Name = push_swap.a
+Name = push_swap
 
 CC = gcc
 
@@ -6,9 +6,16 @@ CFLAGS = -Wall -Werror -Wextra -I./includes
 
 OBJS = ${SRCS:.c=.o}
 
-HEADER = libft.h
+HEADER = push_swap.h
 
-SRCS = srcs/*.c
+SRCS = ft_atoi.c\
+	   ft_isdigit.c\
+	   ft_check_error.c\
+	   ft_init.c\
+	   ft_push.c\
+	   ft_reverse.c\
+	   ft_rotate.c\
+	   ft_swap.c\
 
 all :	${NAME}
 
@@ -17,7 +24,6 @@ all :	${NAME}
 
 ${NAME} :	${OBJS}
 	ar -cr ${NAME} ${OBJS}
-
 clean :
 	/bin/rm -f ${OBJS}
 

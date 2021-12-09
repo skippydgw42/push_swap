@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_char_nb.c                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 15:25:35 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/11/19 16:46:39 by mdegraeu         ###   ########lyon.fr   */
+/*   Created: 2021/11/04 15:11:37 by mdegraeu          #+#    #+#             */
+/*   Updated: 2021/12/09 16:25:13 by mdegraeu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_char_nb(int nb, int base)
-{
-	int	ct;
+#include "/Users/mdegraeu/github/projects/push_swap/push_swap.h"
 
-	ct = 0;
-	if (nb <= 0)
-		ct++;
-	while (nb)
-	{
-		nb /= base;
-		ct++;
-	}
-	return (ct);
+int	ft_isdigit(int c)
+{
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
 }

@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_dispatch.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 15:53:25 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/11/19 16:42:58 by mdegraeu         ###   ########lyon.fr   */
+/*   Created: 2021/12/09 15:55:27 by mdegraeu          #+#    #+#             */
+/*   Updated: 2021/12/09 17:40:30 by mdegraeu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "/Users/mdegraeu/github/projects/push_swap/push_swap.h"
 
-int	ft_putstr(char *str)
+void	ft_dispatch(ptr_stack ptr, int ac)
 {
-	int	i;
+	int	mid;
+	int	min;
+	int	max;
 
-	i = 0;
-	if (!str)
+	mid = 0;
+	min = ft_min(ptr.a->tab, ptr.a->size);
+	max = ft_max(ptr.a->tab, ptr.a->size);
+	while (mid - min < max - mid)
+		mid++;
+	while (ft_max(ptr.a->tab, ptr.a->size) > mid)
 	{
-		write(1, "(null)", 6);
-		return (6);
+		if (ptr.a->tab[0] > mid)
+			ft_pb(&ptr, ac);
+		else
+			ft_ra(ptr);
 	}
-	while (str[i])
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
-	return (i);
 }
