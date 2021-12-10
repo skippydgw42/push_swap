@@ -6,13 +6,13 @@
 /*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 16:10:17 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/12/09 16:24:31 by mdegraeu         ###   ########lyon.fr   */
+/*   Updated: 2021/12/10 15:46:46 by mdegraeu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "/Users/mdegraeu/github/projects/push_swap/push_swap.h"
 
-void	ft_ra(ptr_stack ptr)
+void	ft_ra(t_ptr ptr)
 {
 	int	i;
 	int	c;
@@ -25,9 +25,10 @@ void	ft_ra(ptr_stack ptr)
 		i++;
 	}
 	ptr.a->tab[i] = c;
+	write(1, "ra\n", 3);
 }
 
-void	ft_rb(ptr_stack ptr)
+void	ft_rb(t_ptr ptr)
 {
 	int	i;
 	int	c;
@@ -40,10 +41,12 @@ void	ft_rb(ptr_stack ptr)
 		i++;
 	}
 	ptr.b->tab[i] = c;
+	write(1, "rb\n", 3);
 }
 
-void	ft_rr(ptr_stack ptr)
+void	ft_rr(t_ptr ptr)
 {
 	ft_ra(ptr);
 	ft_rb(ptr);
+	write(1, "rr\n", 3);
 }
