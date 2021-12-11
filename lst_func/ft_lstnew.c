@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 15:27:04 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/11/05 13:46:57 by mdegraeu         ###   ########lyon.fr   */
+/*   Created: 2021/11/09 11:42:52 by mdegraeu          #+#    #+#             */
+/*   Updated: 2021/12/11 12:15:19 by mdegraeu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-char	*ft_strchr(const char *str, int c)
+t_list	*ft_lstnew(long content)
 {
-	int	i;
+	t_list	*output;
 
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == (char)c)
-			return ((char *)&str[i]);
-		i++;
-	}
-	if ((char)c == '\0')
-		return ((char *)&str[i]);
-	return (NULL);
+	output = malloc(sizeof(t_list) + 1);
+	if (!output)
+		return (NULL);
+	output->content = content;
+	output->next = 0;
+	return (output);
 }

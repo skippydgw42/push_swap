@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_stack.c                                   :+:      :+:    :+:   */
+/*   ft_check_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/10 13:57:25 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/12/10 13:59:53 by mdegraeu         ###   ########lyon.fr   */
+/*   Created: 2021/12/09 11:10:29 by mdegraeu          #+#    #+#             */
+/*   Updated: 2021/12/11 15:40:43 by mdegraeu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/mdegraeu/github/projects/push_swap/push_swap.h"
+#include "../push_swap.h"
 
-int	ft_check_b(t_ptr ptr)
+static int	ft_same_param(int ac, char **av)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	while (i < ptr.b->size)
+	i = 1;
+	while (i < ac)
 	{
 		j = i + 1;
-		while (j < ptr.b->size)
+		while (j < ac)
 		{
-			if (ptr.b->tab[i] < ptr.b->tab[j])
+			if (ft_atoi(av[i]) == ft_atoi(av[j]))
 				return (0);
 			j++;
 		}
@@ -32,29 +32,28 @@ int	ft_check_b(t_ptr ptr)
 	return (1);
 }
 
-int	ft_check_a(t_ptr ptr)
+int	ft_check_error(int ac, char **av)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	while (i < ptr.a->size)
+	i = 1;
+	if (ac < 2)
+		return (0);
+	while (i < ac)
 	{
-		j = i + 1;
-		while (j < ptr.a->size)
+		if (ft_atoi(av[i]) > INT_MAX || ft_atoi(av[i]) < INT_MIN)
+			return (0);
+		j = 0;
+		while (av[i][j])
 		{
-			if (ptr.a->tab[i] > ptr.a->tab[j])
+			if (!ft_isdigit(av[i][j]) && av[i][0] != '-')
 				return (0);
 			j++;
 		}
 		i++;
 	}
+	if (!ft_same_param(ac, av))
+		return (0);
 	return (1);
-}
-
-int	ft_check_both(t_ptr ptr)
-{
-	if (ft_check_a(ptr) && ft_check_b(ptr))
-		return (1);
-	return (0);
 }

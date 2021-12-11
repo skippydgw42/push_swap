@@ -5,48 +5,43 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/08 16:19:29 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/12/10 15:46:04 by mdegraeu         ###   ########lyon.fr   */
+/*   Created: 2021/12/11 14:24:15 by mdegraeu          #+#    #+#             */
+/*   Updated: 2021/12/11 15:35:54 by mdegraeu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/mdegraeu/github/projects/push_swap/push_swap.h"
+#include "../push_swap.h"
 
-void	ft_rra(t_ptr ptr)
+void	ft_rra(t_list **alst)
 {
-	int	i;
-	int	c;
+	t_list	*out;
+	t_list	*start;
 
-	i = ptr.a->size - 1;
-	c = ptr.a->tab[i];
-	while (i)
-	{
-		ptr.a->tab[i] = ptr.a->tab[i - 1];
-		i--;
-	}
-	ptr.a->tab[i] = c;
-	write(1, "rra\n", 4);
+	start = (*alst);
+	out = ft_lstlast(*alst);
+	while ((*alst)->next->next)
+		(*alst) = (*alst)->next;
+	(*alst)->next = 0;
+	out->next = start;
+	(*alst) = out;
 }
 
-void	ft_rrb(t_ptr ptr)
+void	ft_rrb(t_list **blst)
 {
-	int	i;
-	int	c;
+	t_list	*out;
+	t_list	*start;
 
-	i = ptr.b->size - 1;
-	c = ptr.b->tab[i];
-	while (i)
-	{
-		ptr.b->tab[i] = ptr.b->tab[i - 1];
-		i--;
-	}
-	ptr.b->tab[i] = c;
-	write(1, "rrb\n", 4);
+	start = (*blst);
+	out = ft_lstlast(*blst);
+	while ((*blst)->next->next)
+		(*blst) = (*blst)->next;
+	(*blst)->next = 0;
+	out->next = start;
+	(*blst) = out;
 }
 
-void	ft_rrr(t_ptr ptr)
+void	ft_rrr(t_list **alst, t_list **blst)
 {
-	ft_rra(ptr);
-	ft_rrb(ptr);
-	write(1, "rrr\n", 4);
+	ft_rra(alst);
+	ft_rrb(blst);
 }

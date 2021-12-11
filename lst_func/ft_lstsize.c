@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 15:27:46 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/11/05 13:40:35 by mdegraeu         ###   ########lyon.fr   */
+/*   Created: 2021/11/09 11:43:15 by mdegraeu          #+#    #+#             */
+/*   Updated: 2021/12/11 11:07:08 by mdegraeu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-char	*ft_strdup(const char *src)
+int	ft_lstsize(t_list *lst)
 {
-	int		i;
-	char	*dest;
+	int	i;
 
-	i = ft_strlen(src);
-	dest = malloc(sizeof(char) * (i + 1));
-	if (!dest)
-		return (NULL);
 	i = 0;
-	while (src[i])
+	while (lst)
 	{
-		dest[i] = src[i];
+		lst = lst->next;
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (i);
 }

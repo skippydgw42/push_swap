@@ -1,21 +1,42 @@
-Name = push_swap
+NAME = push_swap
 
 CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra -I./includes
 
+HEADER = ./push_swap.h
+
+ACTIONS =\
+	   		actions/ft_push.c\
+	   		actions/ft_reverse.c\
+	   		actions/ft_rotate.c\
+	   		actions/ft_swap.c\
+
+ADD =\
+		add/ft_atoi.c\
+		add/ft_isdigit.c\
+
+LST_FUNC =\
+			lst_func/ft_lstnew.c\
+			lst_func/ft_lstlast.c\
+			lst_func/ft_lstsize.c\
+			lst_func/ft_lstdelone.c\
+			lst_func/ft_lstclear.c\
+			lst_func/ft_lstadd_back.c\
+			lst_func/ft_lstadd_front.c\
+
+CHECK =\
+		check/ft_check_error.c\
+
+SRCS =\
+	   	ft_init.c\
+		main.c\
+		${ACTIONS}\
+		${ADD}\
+		${LST_FUNC}\
+		${CHECK}\
+
 OBJS = ${SRCS:.c=.o}
-
-HEADER = push_swap.h
-
-SRCS = ft_atoi.c\
-	   ft_isdigit.c\
-	   ft_check_error.c\
-	   ft_init.c\
-	   ft_push.c\
-	   ft_reverse.c\
-	   ft_rotate.c\
-	   ft_swap.c\
 
 all :	${NAME}
 
@@ -23,7 +44,8 @@ all :	${NAME}
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME} :	${OBJS}
-	ar -cr ${NAME} ${OBJS}
+	${CC} ${FLAGS} ${OBJS} -o ${NAME}
+
 clean :
 	/bin/rm -f ${OBJS}
 

@@ -5,41 +5,41 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/07 16:05:30 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/12/10 15:52:30 by mdegraeu         ###   ########lyon.fr   */
+/*   Created: 2021/12/11 11:12:00 by mdegraeu          #+#    #+#             */
+/*   Updated: 2021/12/11 16:04:19 by mdegraeu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/mdegraeu/github/projects/push_swap/push_swap.h"
+#include "push_swap.h"
 
-void	ft_print_tab(int *tab, int size)
+void	ft_print(t_list *ptr)
 {
-	int	i;
+	static int	x;
 
-	i = 0;
-	while (i < size)
+	printf("==========================print nb%d==============================\n", x);
+	while (ptr)
 	{
-		printf("%d", tab[i]);
-		i++;
-		printf("\n");
+		printf("%ld\n", ptr->content);
+		ptr = ptr->next;
 	}
+	x++;
+
+
 }
 
 int	main(int ac, char **av)
 {
-	t_ptr	ptr;
+	t_list	*stack_a;
+	t_list	*stack_b;
 
+	stack_a = NULL;
+	stack_b = NULL;
 	if (!ft_check_error(ac, av))
 	{
 		write(1, "Error\n", 6);
 		return (0);
 	}
-	ptr = ft_init_stack(ac, av);
-	ft_dispatch(ptr, ac);
-	ft_decision(ptr, ac);
-	while (ptr.b->size > 0)
-		ft_pa(&ptr, ac);
-	ft_print_tab(ptr.a->tab, ptr.a->size);
-	ft_print_tab(ptr.b->tab, ptr.b->size);
+	stack_a = ft_init(ac, av);
+	ft_print(stack_a);
 	return (0);
 }

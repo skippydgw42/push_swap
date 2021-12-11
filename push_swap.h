@@ -5,81 +5,65 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/07 15:16:26 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/12/10 13:59:02 by mdegraeu         ###   ########lyon.fr   */
+/*   Created: 2021/12/11 10:58:32 by mdegraeu          #+#    #+#             */
+/*   Updated: 2021/12/11 15:35:46 by mdegraeu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <fcntl.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <string.h>
-# include <limits.h>
-
 # ifndef INT_MAX
 #  define INT_MAX 2147483647
 # endif
+
 # ifndef INT_MIN
-#  define INT_MAX -2147483648
+#  define INT_MIN -2147483648
 # endif
 
-typedef struct push_list
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+
+typedef struct s_list
 {
-	int				*tab;
-	int				size;
-}	t_init;
+	long			content;
+	struct s_list	*next;
+}	t_list;
 
-typedef struct ptr_stack
-{
-	t_init	*a;
-	t_init	*b;
-}	t_ptr;
+//===============LST_FUNCTIONS==============================//
+t_list	*ft_lstnew(long content);
+void	ft_lstadd_front(t_list **alst, t_list *new);
+int		ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
+void	ft_lstadd_back(t_list **alst, t_list *new);
+void	ft_lstdelone(t_list *lst, void (*del)(long));
+void	ft_lstclear(t_list **lst, void (*del)(long));
 
-//=============INITIALIZE STACKS=============/
-t_init	*ft_init_a(int ac, char **av);
-t_init	*ft_init_b(int ac);
-t_ptr	ft_init_stack(int ac, char **av);
+//=================ACTIONS==================================//
+void	ft_sa(t_list **alst);
+void	ft_sb(t_list **blst);
+void	ft_ss(t_list **alst, t_list **blst);
+void	ft_ra(t_list **alst);
+void	ft_rb(t_list **blst);
+void	ft_rr(t_list **alst, t_list **blst);
+void	ft_rra(t_list **alst);
+void	ft_rrb(t_list **blst);
+void	ft_rrr(t_list **alst, t_list **blst);
+void	ft_pb(t_list **alst, t_list **blst);
+void	ft_pa(t_list **alst, t_list **blst);
 
-//=============SWAP OPERATIONS==================/
-void		ft_sa(t_ptr ptr);
-void		ft_sb(t_ptr ptr);
-void		ft_ss(t_ptr ptr);
-void		ft_pb(t_ptr *ptr, int ac);
-void		ft_pa(t_ptr *ptr, int ac);
-void		ft_ra(t_ptr ptr);
-void		ft_rb(t_ptr ptr);
-void		ft_rr(t_ptr ptr);
-void		ft_rra(t_ptr ptr);
-void		ft_rrb(t_ptr ptr);
-void		ft_rrr(t_ptr ptr);
+//=================PARSING==================================//
+int	ft_check_error(int ac, char **av);
 
-//=============DISPATCH=========================/
-void		ft_dispatch(t_ptr ptr, int ac);
+//================ADDITIONNAL_FUNC==========================//
+long	ft_atoi(const char *str);
+int		ft_isdigit(int c);
 
-//=============CHECK STACK======================/
-int			ft_check_a(t_ptr ptr);
-int			ft_check_b(t_ptr ptr);
-int			ft_check_both(t_ptr ptr);
+//===============INITIALIZE CHAIN===========================//
+t_list	*ft_init(int ac, char **av);
 
-//=============SOLVER===========================/
-int			ft_decision(t_ptr ptr, int ac);
-
-//=============CHECK ERRORS=====================/
-int			ft_check_error(int ac, char **av);
-
-//=============ADDITIONNAL FUNCTIONS============/
-long		ft_atoi(const char *src);
-int			ft_isdigit(int c);
-int			ft_max(int *tab, int size);
-int			ft_min(int *tab, int size);
-
-//=============TO_DEL FUNCT=====================/
-void		ft_print_tab(int *tab, int size);
+//================TO_DEL===================================//
+void	ft_print(t_list *ptr);
 
 #endif
