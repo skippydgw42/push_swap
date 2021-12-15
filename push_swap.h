@@ -6,7 +6,7 @@
 /*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 10:58:32 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/12/11 15:35:46 by mdegraeu         ###   ########lyon.fr   */
+/*   Updated: 2021/12/15 16:36:09 by mdegraeu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -53,12 +54,19 @@ void	ft_rrr(t_list **alst, t_list **blst);
 void	ft_pb(t_list **alst, t_list **blst);
 void	ft_pa(t_list **alst, t_list **blst);
 
+//=================SOLVER===================================//
+//void	ft_dispatch(t_list **alst, t_list **blst);
+void	ft_dispatch(t_list **alst, t_list **blst, long med);
+void	ft_sort_a(t_list **alst, int med);
+int		ft_check_a(t_list *ptr);
+
 //=================PARSING==================================//
-int	ft_check_error(int ac, char **av);
+int		ft_check_error(int ac, char **av);
 
 //================ADDITIONNAL_FUNC==========================//
 long	ft_atoi(const char *str);
 int		ft_isdigit(int c);
+long	ft_median(t_list *ptr);
 
 //===============INITIALIZE CHAIN===========================//
 t_list	*ft_init(int ac, char **av);

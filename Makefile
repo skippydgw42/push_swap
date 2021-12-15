@@ -15,6 +15,7 @@ ACTIONS =\
 ADD =\
 		add/ft_atoi.c\
 		add/ft_isdigit.c\
+		add/ft_median.c\
 
 LST_FUNC =\
 			lst_func/ft_lstnew.c\
@@ -30,6 +31,7 @@ CHECK =\
 
 SRCS =\
 	   	ft_init.c\
+		ft_solver.c\
 		main.c\
 		${ACTIONS}\
 		${ADD}\

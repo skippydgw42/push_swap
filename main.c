@@ -6,7 +6,7 @@
 /*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 11:12:00 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/12/11 16:04:19 by mdegraeu         ###   ########lyon.fr   */
+/*   Updated: 2021/12/15 16:34:09 by mdegraeu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,15 @@
 void	ft_print(t_list *ptr)
 {
 	static int	x;
+	char	c;
 
 	printf("==========================print nb%d==============================\n", x);
+	//if (x == 0)
+	//	c = '0';
+	if (x % 2 != 0)
+		c = 'b';
+	else
+		c = 'a';
 	while (ptr)
 	{
 		printf("%ld\n", ptr->content);
@@ -41,5 +48,10 @@ int	main(int ac, char **av)
 	}
 	stack_a = ft_init(ac, av);
 	ft_print(stack_a);
+	ft_dispatch(&stack_a, &stack_b, ft_median(stack_a));
+	while (ft_lstsize(stack_b) > 0)
+		ft_pa(&stack_a, &stack_b);
+	//ft_print(stack_a);
+	//ft_print(stack_b);
 	return (0);
 }
