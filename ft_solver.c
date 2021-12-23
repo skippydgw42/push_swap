@@ -46,28 +46,30 @@ int		ft_check_a(t_list *ptr)
 	return (1);
 }
 
-long	ft_max(t_list *ptr)
+void	ft_sort_b(t_list **alst, t_list **blst)
 {
-	long	max;
-
-	max = ptr->content;
-	while (ptr)
+	if (ft_lstsize(*blst) > 1)
 	{
-		if (max < ptr->content)
-			max = ptr->content;
-		ptr = ptr->next;
+		if ((*alst)->content < ft_min(*blst))
+		{
+			ft_go_min(blst);
+			ft_rb(blst);
+		}
+		else if ((*alst)->content > ft_max(*blst))
+			ft_go_max(blst);
+		else
+		{
+			while (!((*alst)->content < (*blst)->content && (*alst)->content > (*blst)->next->content))
+			{
+				if (ft_direction(blst, (*alst)->content))
+					ft_rb(blst);
+				else
+					ft_rrb(blst);
+			}
+			ft_rb(blst);
+		}
 	}
-	return (max);
-}
-
-void	ft_sort_b(t_list **blst)
-{
-	if ((*blst)->content < ft_lstlast(*blst)->content && ft_check_b((*blst)->next))
-		ft_rb(blst);
-	if ((*blst)->content < (*blst)->next->content)
-		ft_sb(blst);
-	while ((*blst)->content > (*blst)->next->content && !ft_check_b(*blst))
-		ft_rb(blst);
+		ft_pb(alst, blst);
 }
 
 void	ft_sort_a(t_list **alst, int med)
@@ -85,34 +87,20 @@ void	ft_sort_a(t_list **alst, int med)
 	}
 }
 
-void	ft_pre_sort(t_list **alst, t_list **blst, long med)
+int	ft_dispatch(t_list **alst, t_list **blst, long med)
 {
-	if (ft_lstsize(*blst) > 1)
-	{
-		if ((*blst)->content < ft_lstlast(*blst)->content && ft_check_b((*blst)->next))
-			ft_rb(blst);
-		while (!ft_check_b(*blst))
-			ft_sort_b(blst);
-	}
-	ft_sort_a(alst, med);
-}
-
-void	ft_dispatch(t_list **alst, t_list **blst, long med)
-{
-	//long	med;
-
-	//med = ft_median(*alst);
-	if (ft_lstsize(*alst) == 2)
-		return ;
 	while (ft_lstsize(*alst) > ft_lstsize(*blst))
 	{
 		if ((*alst)->content <= med)
-			ft_pb(alst, blst);
+			ft_sort_b(alst, blst);
 		else
 			ft_ra(alst);
-		ft_pre_sort(alst, blst, med);
 	}
-	ft_dispatch(alst, blst, ft_median(*alst));
-	//while (!ft_check_a(*alst))
-	//	ft_sort_a(alst, med);
+	while (ft_lstsize(*alst) > 5)
+		ft_sort_b(alst, blst);
+	while (!ft_check_a(*alst))
+		ft_sort_a(alst, med);
+	while (!((*blst)->content == ft_max(*blst)))
+		ft_rrb(blst);
+	return (0);
 }

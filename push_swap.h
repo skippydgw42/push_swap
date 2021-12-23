@@ -56,9 +56,11 @@ void	ft_pa(t_list **alst, t_list **blst);
 
 //=================SOLVER===================================//
 //void	ft_dispatch(t_list **alst, t_list **blst);
-void	ft_dispatch(t_list **alst, t_list **blst, long med);
+int	ft_dispatch(t_list **alst, t_list **blst, long med);
 void	ft_sort_a(t_list **alst, int med);
-int		ft_check_a(t_list *ptr);
+void	ft_sort_b(t_list **alst, t_list **blst);
+int	ft_check_a(t_list *ptr);
+int	ft_check_b(t_list *ptr);
 
 //=================PARSING==================================//
 int		ft_check_error(int ac, char **av);
@@ -67,6 +69,11 @@ int		ft_check_error(int ac, char **av);
 long	ft_atoi(const char *str);
 int		ft_isdigit(int c);
 long	ft_median(t_list *ptr);
+int	ft_direction(t_list **blst, long nb);
+long	ft_min(t_list *ptr);
+void	ft_go_min(t_list **blst);
+long	ft_max(t_list *ptr);
+void	ft_go_max(t_list **blst);
 
 //===============INITIALIZE CHAIN===========================//
 t_list	*ft_init(int ac, char **av);

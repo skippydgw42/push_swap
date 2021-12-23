@@ -14,24 +14,12 @@
 
 void	ft_print(t_list *ptr)
 {
-	static int	x;
-	char	c;
-
-	printf("==========================print nb%d==============================\n", x);
-	//if (x == 0)
-	//	c = '0';
-	if (x % 2 != 0)
-		c = 'b';
-	else
-		c = 'a';
+	printf("==========================print tab==============================\n");
 	while (ptr)
 	{
 		printf("%ld\n", ptr->content);
 		ptr = ptr->next;
 	}
-	x++;
-
-
 }
 
 int	main(int ac, char **av)
@@ -47,11 +35,9 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	stack_a = ft_init(ac, av);
-	ft_print(stack_a);
 	ft_dispatch(&stack_a, &stack_b, ft_median(stack_a));
 	while (ft_lstsize(stack_b) > 0)
 		ft_pa(&stack_a, &stack_b);
 	//ft_print(stack_a);
-	//ft_print(stack_b);
 	return (0);
 }

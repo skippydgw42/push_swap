@@ -16,6 +16,7 @@ ADD =\
 		add/ft_atoi.c\
 		add/ft_isdigit.c\
 		add/ft_median.c\
+		add/ft_direction.c\
 
 LST_FUNC =\
 			lst_func/ft_lstnew.c\
