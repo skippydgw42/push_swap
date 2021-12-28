@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 11:12:00 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/12/15 16:34:09 by mdegraeu         ###   ########lyon.fr   */
+/*   Updated: 2021/12/28 17:32:06 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_print(t_list *ptr)
 {
-	printf("==========================print tab==============================\n");
+	printf("=======================print tab===========================\n");
 	while (ptr)
 	{
 		printf("%ld\n", ptr->content);
@@ -26,9 +26,8 @@ int	main(int ac, char **av)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	int		i;
+	int		ret;
 
-	i = 5;
 	stack_a = NULL;
 	stack_b = NULL;
 	if (!ft_check_error(ac, av))
@@ -37,9 +36,17 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	stack_a = ft_init(ac, av);
-	ft_solver(&stack_a, &stack_b, ac - 1);
+	ret = ft_solver(&stack_a, &stack_b, ac - 1, ac);
+	if (ret == 0)
+	{
+		ft_lstclear(&stack_a);
+		ft_lstclear(&stack_b);
+		write(1, "Error malloc\n", 13);
+		return (0);
+	}
 	while (ft_lstsize(stack_b) > 0)
 		ft_pa(&stack_a, &stack_b);
-	//ft_print(stack_a);
+	ft_lstclear(&stack_a);
+	ft_lstclear(&stack_b);
 	return (0);
 }

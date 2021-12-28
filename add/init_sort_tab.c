@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_median.c                                        :+:      :+:    :+:   */
+/*   ft_create_tab.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 10:48:56 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/12/15 12:56:40 by mdegraeu         ###   ########lyon.fr   */
+/*   Updated: 2021/12/28 12:59:11 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,23 @@ long	*ft_sort_tab(long *tab, int size)
 		else
 			i++;
 	}
-	//printf("tab : %ld\n", tab[0]);
 	return (tab);
 }
 
 long	*ft_create_tab(t_list *ptr)
 {
-	int		i;
+	long	i;
 	int		size;
 	long	*tab;
 
 	i = 0;
 	size = ft_lstsize(ptr);
-	//return malloc error a revoir
 	tab = malloc(sizeof(long) * (size + 1));
-	//	if (!tab)
-	//		return (2147483649);
+	if (!tab)
+	{
+		ptr->content = 2147483649;
+		return (&ptr->content);
+	}
 	while (ptr)
 	{
 		tab[i] = ptr->content;
@@ -55,19 +56,4 @@ long	*ft_create_tab(t_list *ptr)
 		ptr = ptr->next;
 	}
 	return (ft_sort_tab(tab, size - 1));
-}
-
-long	ft_median(t_list *ptr)
-{
-	int		size;
-	long	*tab;
-	long	ret;
-
-	size = ft_lstsize(ptr);
-	tab = ft_create_tab(ptr);
-	if (size % 2)
-		size++;
-	ret = tab[size / 2];
-	free (tab);
-	return (ret);
 }

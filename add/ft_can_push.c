@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_still_push.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 11:43:49 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/12/28 17:31:03 by mdegraeu         ###   ########.fr       */
+/*   Created: 2021/12/28 12:39:23 by mdegraeu          #+#    #+#             */
+/*   Updated: 2021/12/28 13:02:52 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-//void	ft_lstclear(t_list **lst, void (*del)(long))
-void	ft_lstclear(t_list **lst)
+int	ft_can_push(t_list **alst, long pivot)
 {
 	t_list	*ptr;
 
-	while ((*lst) != 0)
+	ptr = *alst;
+	while (ptr->next)
 	{
-		ptr = (*lst)->next;
-		//(del)((*lst)->content);
-		//free(&(*lst)->content);
-		free(*lst);
-		(*lst) = ptr;
+		if (ptr->content <= pivot)
+			return (1);
+		ptr = ptr->next;
 	}
-	*lst = NULL;
+	return (0);
 }

@@ -15,10 +15,10 @@ ACTIONS =\
 ADD =\
 		add/ft_atoi.c\
 		add/ft_isdigit.c\
-		add/ft_create_tab.c\
+		add/init_sort_tab.c\
 		add/ft_direction.c\
-		add/ft_still_push.c\
-		add/new_needs.c\
+		add/ft_can_push.c\
+		add/piv_index.c\
 
 LST_FUNC =\
 			lst_func/ft_lstnew.c\
@@ -30,11 +30,12 @@ LST_FUNC =\
 			lst_func/ft_lstadd_front.c\
 
 CHECK =\
-		check/ft_check_error.c\
+		check/check_error.c\
 
 SRCS =\
-	   	ft_init.c\
-		ft_solver.c\
+	   	stack_init.c\
+		sort_check.c\
+		solver.c\
 		main.c\
 		${ACTIONS}\
 		${ADD}\
@@ -42,6 +43,8 @@ SRCS =\
 		${CHECK}\
 
 OBJS = ${SRCS:.c=.o}
+
+ARGS = `arg="$(filter-out $@,$(MAKECMDGOALS))" && echo $${arg:-${1}}`
 
 all :	${NAME}
 
@@ -58,5 +61,8 @@ fclean :	clean
 	/bin/rm -f ${NAME}
 
 re :	fclean all
+
+leaks: $(NAME)
+	leaks -atExit -- ./$(NAME) $(call ARGS,defaultstring)
 
 .PHONY : all clean fclean re

@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_direction.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/28 12:38:06 by mdegraeu          #+#    #+#             */
+/*   Updated: 2021/12/28 12:39:07 by mdegraeu         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../push_swap.h"
 
 int	ft_direction(t_list **blst, long nb)
 {
 	t_list	*ptr;
-	int	ct;
+	int		ct;
 
 	ptr = *blst;
 	ct = 0;
@@ -23,32 +34,6 @@ int	ft_direction(t_list **blst, long nb)
 		return (1);
 	return (0);
 }
-/*
-int	ft_direction(t_list **blst, long nb)
-{
-	t_list	*ptr;
-	int	ct;
-
-	ptr = *blst;
-	ct = 0;
-	while (ptr->next)
-	{
-		if (nb == ft_min(*blst) && ptr->content == nb)
-			break ;
-		if (nb == ft_max(*blst) && ptr->content == nb)
-			break ;
-		if (nb < ptr->content && nb > ptr->next->content)
-			break ;
-		if (ptr->content == ft_lstlast(*blst)->content)
-			return (-1);
-		ptr = ptr->next;
-		ct++;
-	}
-	if (ct <= ft_lstsize(*blst) / 2)
-		return (1);
-	return (0);
-}
-*/
 
 long	ft_min(t_list *ptr)
 {
@@ -83,7 +68,7 @@ void	ft_go_min(t_list **blst)
 	long	min;
 
 	min = ft_min(*blst);
-	while((*blst)->content != min)
+	while ((*blst)->content != min)
 	{
 		if (ft_direction(blst, min))
 			ft_rb(blst);
