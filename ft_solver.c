@@ -48,59 +48,62 @@ int		ft_check_a(t_list *ptr)
 
 void	ft_sort_b(t_list **alst, t_list **blst)
 {
+	long	stop;
+
 	if (ft_lstsize(*blst) > 1)
 	{
+		stop = ft_stop_roll(blst, (*alst)->content);
 		if ((*alst)->content < ft_min(*blst))
-		{
-			ft_go_min(blst);
-			ft_rb(blst);
-		}
+			ft_go_max(blst);
 		else if ((*alst)->content > ft_max(*blst))
 			ft_go_max(blst);
 		else
 		{
-			while (!((*alst)->content < (*blst)->content && (*alst)->content > (*blst)->next->content))
+			while ((*blst)->content != stop)
 			{
-				if (ft_direction(blst, (*alst)->content))
+				//if (ft_direction(blst, (*alst)->content))
+				if (ft_direction(blst, stop))
 					ft_rb(blst);
 				else
 					ft_rrb(blst);
 			}
-			ft_rb(blst);
 		}
 	}
-		ft_pb(alst, blst);
+	ft_pb(alst, blst);
+	ft_print(*blst);
 }
 
-void	ft_sort_a(t_list **alst, int med)
+void	ft_sort_a(t_list **alst)
 {
-	if ((*alst)->content > med && (*alst)->next->content > med)
-	{
-		if ((*alst)->content == ft_max(*alst))
-			ft_ra(alst);
-		if ((*alst)->content > ft_lstlast(*alst)->content && ft_check_a((*alst)->next))
-			ft_ra(alst);
-		if ((*alst)->content > (*alst)->next->content)
-			ft_sa(alst);
-		while ((*alst)->content < (*alst)->next->content && !ft_check_a(*alst))
-			ft_ra(alst);
-	}
+	if ((*alst)->content == ft_max(*alst))
+		ft_ra(alst);
+	if ((*alst)->content > ft_lstlast(*alst)->content && ft_check_a((*alst)->next))
+		ft_ra(alst);
+	if ((*alst)->content > (*alst)->next->content)
+		ft_sa(alst);
+	while ((*alst)->content < (*alst)->next->content && !ft_check_a(*alst))
+		ft_ra(alst);
 }
 
-int	ft_dispatch(t_list **alst, t_list **blst, long med)
+//essaie de changer la valeur de 'med' jusqu a lstsize(*alst) < 5 dans tous les cas !
+int	ft_solver(t_list **alst, t_list **blst, long pivot)
 {
-	while (ft_lstsize(*alst) > ft_lstsize(*blst))
+	pivot = ft_pivot(ft_create_tab(*alst), ft_lstsize(*alst) - 1);
+	while (pivot != 2147483649)
 	{
-		if ((*alst)->content <= med)
-			ft_sort_b(alst, blst);
-		else
-			ft_ra(alst);
+		//write(1, "ICI\n", 4);
+		while (ft_still_push(alst, pivot))
+		{
+			if ((*alst)->content <= pivot && (*alst)->content < ft_not_b(*alst))
+				ft_sort_b(alst, blst);
+			else
+				ft_ra(alst);
+		}
+		pivot = ft_pivot(ft_create_tab(*alst), ft_lstsize(*alst) - 1);
 	}
-	while (ft_lstsize(*alst) > 5)
-		ft_sort_b(alst, blst);
 	while (!ft_check_a(*alst))
-		ft_sort_a(alst, med);
+		ft_sort_a(alst);
 	while (!((*blst)->content == ft_max(*blst)))
 		ft_rrb(blst);
-	return (0);
+	return (1);
 }

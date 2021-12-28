@@ -14,15 +14,41 @@ int	ft_direction(t_list **blst, long nb)
 			break ;
 		if (nb == ft_max(*blst) && ptr->content == nb)
 			break ;
-		if (nb < ptr->content && nb > ptr->next->content)
+		if (nb == ptr->content)
 			break ;
 		ptr = ptr->next;
 		ct++;
 	}
-	if (ct < ft_lstsize(ptr) / 2)
+	if (ct <= ft_lstsize(*blst) / 2)
 		return (1);
 	return (0);
 }
+/*
+int	ft_direction(t_list **blst, long nb)
+{
+	t_list	*ptr;
+	int	ct;
+
+	ptr = *blst;
+	ct = 0;
+	while (ptr->next)
+	{
+		if (nb == ft_min(*blst) && ptr->content == nb)
+			break ;
+		if (nb == ft_max(*blst) && ptr->content == nb)
+			break ;
+		if (nb < ptr->content && nb > ptr->next->content)
+			break ;
+		if (ptr->content == ft_lstlast(*blst)->content)
+			return (-1);
+		ptr = ptr->next;
+		ct++;
+	}
+	if (ct <= ft_lstsize(*blst) / 2)
+		return (1);
+	return (0);
+}
+*/
 
 long	ft_min(t_list *ptr)
 {

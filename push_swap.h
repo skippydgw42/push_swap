@@ -56,8 +56,8 @@ void	ft_pa(t_list **alst, t_list **blst);
 
 //=================SOLVER===================================//
 //void	ft_dispatch(t_list **alst, t_list **blst);
-int	ft_dispatch(t_list **alst, t_list **blst, long med);
-void	ft_sort_a(t_list **alst, int med);
+int	ft_solver(t_list **alst, t_list **blst, long pivot);
+void	ft_sort_a(t_list **alst);
 void	ft_sort_b(t_list **alst, t_list **blst);
 int	ft_check_a(t_list *ptr);
 int	ft_check_b(t_list *ptr);
@@ -74,6 +74,14 @@ long	ft_min(t_list *ptr);
 void	ft_go_min(t_list **blst);
 long	ft_max(t_list *ptr);
 void	ft_go_max(t_list **blst);
+int		ft_still_push(t_list **alst, long pivot);
+
+//===============NEW NEEDS===================================//
+long	ft_stop_roll(t_list **blst, long nb);
+long    ft_pivot(long *tab, int size);
+long    ft_not_b(t_list *ptr);
+long	*ft_create_tab(t_list *ptr);
+
 
 //===============INITIALIZE CHAIN===========================//
 t_list	*ft_init(int ac, char **av);

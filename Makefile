@@ -15,8 +15,10 @@ ACTIONS =\
 ADD =\
 		add/ft_atoi.c\
 		add/ft_isdigit.c\
-		add/ft_median.c\
+		add/ft_create_tab.c\
 		add/ft_direction.c\
+		add/ft_still_push.c\
+		add/new_needs.c\
 
 LST_FUNC =\
 			lst_func/ft_lstnew.c\
