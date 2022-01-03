@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 10:58:32 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/12/28 16:06:24 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/01/03 17:27:14 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **alst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(long));
-void	ft_lstclear(t_list **lst);
+void	ft_lstclear(t_list **lst, void (*del)(long));
 
 //=================ACTIONS==================================//
 void	ft_sa(t_list **alst);
@@ -56,19 +56,23 @@ void	ft_pa(t_list **alst, t_list **blst);
 
 //=================PARSING==================================//
 int		ft_check_error(int ac, char **av);
+int		ft_check_a(t_list *ptr);
+int		ft_check_b(t_list *ptr);
 
 //=================SOLVER===================================//
 int		ft_solver(t_list **alst, t_list **blst, long pivot, int ac);
 
-//=================SORT CHECK===============================//
-void	ft_sort_a(t_list **alst);
+//=================SORT=====================================//
+void	ft_sort(t_list **alst, t_list **blst, int ac);
+void	ft_sort_a(t_list **alst, t_list **blst);
 void	ft_sort_b(t_list **alst, t_list **blst);
-int		ft_check_a(t_list *ptr);
-int		ft_check_b(t_list *ptr);
+void	ft_sort_three(t_list **alst);
+void	ft_sort_four(t_list **alst);
+void	ft_sort_six(t_list **alst, t_list **blst);
 
 //================ADDITIONNAL_FUNC==========================//
 char	**ft_split(char const *s, char c);
-unsigned int	ft_split_count(char const *s, char c);
+int		ft_split_count(char const *s, char c);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 long	ft_atoi(const char *str);

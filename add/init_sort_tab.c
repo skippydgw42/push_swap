@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 10:48:56 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/12/28 12:59:11 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/01/03 12:23:51 by mdegraeu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,5 @@ long	*ft_create_tab(t_list *ptr)
 		i++;
 		ptr = ptr->next;
 	}
-
 	return (ft_sort_tab(tab, size - 1));
 }

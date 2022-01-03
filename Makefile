@@ -35,10 +35,12 @@ LST_FUNC =\
 
 CHECK =\
 		check/check_error.c\
+		check/check_sort.c\
 
 SRCS =\
 	   	stack_init.c\
-		sort_check.c\
+		sort.c\
+		sort_lst_a.c\
 		solver.c\
 		main.c\
 		${ACTIONS}\

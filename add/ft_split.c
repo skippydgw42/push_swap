@@ -6,16 +6,16 @@
 /*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 15:24:03 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/11/10 12:05:09 by mdegraeu         ###   ########lyon.fr   */
+/*   Updated: 2022/01/03 12:20:30 by mdegraeu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-unsigned int	ft_split_count(char const *s, char c)
+int	ft_split_count(char const *s, char c)
 {
-	unsigned int	i;
-	unsigned int	ct;
+	int	i;
+	int	ct;
 
 	i = 0;
 	ct = 0;
@@ -41,10 +41,10 @@ static int	ft_lit_str(char const *s, char c)
 	return (i);
 }
 
-static char	*ft_cpy_str(char const *s, char c, unsigned int i)
+static char	*ft_cpy_str(char const *s, char c, int i)
 {
-	unsigned int	j;
-	char			*str;
+	int		j;
+	char	*str;
 
 	j = 0;
 	str = ft_calloc(ft_lit_str(&s[i], c) + 1, sizeof(char));
@@ -62,9 +62,9 @@ static char	*ft_cpy_str(char const *s, char c, unsigned int i)
 
 char	**ft_split(char const *s, char c)
 {
-	unsigned int	i;
-	unsigned int	k;
-	char			**split;
+	int		i;
+	int		k;
+	char	**split;
 
 	i = 0;
 	k = 0;

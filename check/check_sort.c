@@ -1,39 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   check_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 12:22:32 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/01/03 12:27:00 by mdegraeu         ###   ########lyon.fr   */
+/*   Created: 2022/01/03 13:21:43 by mdegraeu          #+#    #+#             */
+/*   Updated: 2022/01/03 13:21:46 by mdegraeu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_free(char **str)
+int	ft_check_b(t_list *ptr)
 {
 	int	i;
+	int	size;
 
 	i = 0;
-	while (str[i])
+	size = ft_lstsize(ptr);
+	while (i < size - 1)
 	{
-		free (str[i]);
+		if (ptr->content < ptr->next->content)
+			return (0);
+		ptr = ptr->next;
 		i++;
 	}
-	free (str);
+	return (1);
 }
 
-void	ft_stackfree(t_list **stack)
+int	ft_check_a(t_list *ptr)
 {
-	t_list	*ptr;
+	int	i;
+	int	size;
 
-	while (*stack)
+	i = 0;
+	size = ft_lstsize(ptr);
+	while (i < size - 1)
 	{
-		ptr = *stack;
-		*stack = (*stack)->next;
-		free(ptr);
+		if (ptr->content > ptr->next->content)
+			return (0);
+		ptr = ptr->next;
+		i++;
 	}
-	stack = NULL;
+	return (1);
 }
