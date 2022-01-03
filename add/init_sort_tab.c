@@ -55,5 +55,6 @@ long	*ft_create_tab(t_list *ptr)
 		i++;
 		ptr = ptr->next;
 	}
+
 	return (ft_sort_tab(tab, size - 1));
 }

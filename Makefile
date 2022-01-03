@@ -13,12 +13,16 @@ ACTIONS =\
 	   		actions/ft_swap.c\
 
 ADD =\
+		add/ft_split.c\
+		add/ft_calloc.c\
+		add/ft_bzero.c\
 		add/ft_atoi.c\
 		add/ft_isdigit.c\
 		add/init_sort_tab.c\
 		add/ft_direction.c\
 		add/ft_can_push.c\
 		add/piv_index.c\
+		add/free.c\
 
 LST_FUNC =\
 			lst_func/ft_lstnew.c\

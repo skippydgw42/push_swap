@@ -17,7 +17,7 @@ int	ft_solver(t_list **alst, t_list **blst, long pivot, int ac)
 	pivot = ft_pivot(ft_create_tab(*alst), ft_lstsize(*alst) - 1, ac);
 	while (pivot != 2147483649)
 	{
-		while (ft_can_push(alst, pivot))
+		while (ft_can_push(alst, pivot) && ft_lstsize(*alst) > 5)
 		{
 			if ((*alst)->content <= pivot && (*alst)->content < ft_not_b(*alst))
 				ft_sort_b(alst, blst);
@@ -33,8 +33,8 @@ int	ft_solver(t_list **alst, t_list **blst, long pivot, int ac)
 	while (!((*blst)->content == ft_max(*blst)))
 	{
 		if (ft_direction(blst, ft_max(*blst)))
-			ft_rb(blst);
-		else
+		ft_rb(blst);
+	else
 			ft_rrb(blst);
 	}
 	return (1);

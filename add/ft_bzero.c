@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init.c                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/11 11:01:28 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/12/11 12:35:57 by mdegraeu         ###   ########lyon.fr   */
+/*   Created: 2021/11/04 15:07:12 by mdegraeu          #+#    #+#             */
+/*   Updated: 2021/11/04 15:41:24 by mdegraeu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-t_list	*ft_init(int ac, char **av)
+void	ft_bzero(void *s, size_t n)
 {
-	int		i;
-	t_list	*ptr;
-	t_list	*new;
+	size_t	i;
 
 	i = 0;
-	ptr = NULL;
-	while (i < ac)
+	if (n == 0)
+		return ;
+	while (i < n)
 	{
-		new = ft_lstnew(ft_atoi(av[i]));
-		ft_lstadd_back(&ptr, new);
+		*(unsigned char *)s = '\0';
+		s++;
 		i++;
 	}
-	return (ptr);
 }

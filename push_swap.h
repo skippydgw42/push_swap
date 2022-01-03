@@ -39,8 +39,8 @@ int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **alst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(long));
-//void	ft_lstclear(t_list **lst, void (*del)(long));
 void	ft_lstclear(t_list **lst);
+
 //=================ACTIONS==================================//
 void	ft_sa(t_list **alst);
 void	ft_sb(t_list **blst);
@@ -67,6 +67,10 @@ int		ft_check_a(t_list *ptr);
 int		ft_check_b(t_list *ptr);
 
 //================ADDITIONNAL_FUNC==========================//
+char	**ft_split(char const *s, char c);
+unsigned int	ft_split_count(char const *s, char c);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t count, size_t size);
 long	ft_atoi(const char *str);
 int		ft_isdigit(int c);
 int		ft_direction(t_list **blst, long nb);
@@ -75,6 +79,8 @@ void	ft_go_min(t_list **blst);
 long	ft_max(t_list *ptr);
 void	ft_go_max(t_list **blst);
 int		ft_can_push(t_list **alst, long pivot);
+void	ft_free(char **str);
+void	ft_stackfree(t_list **stack);
 
 //===============NEW NEEDS===================================//
 long	ft_stop_roll(t_list **blst, long nb);

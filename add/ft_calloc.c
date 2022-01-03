@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init.c                                          :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdegraeu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/11 11:01:28 by mdegraeu          #+#    #+#             */
-/*   Updated: 2021/12/11 12:35:57 by mdegraeu         ###   ########lyon.fr   */
+/*   Created: 2021/11/04 15:08:07 by mdegraeu          #+#    #+#             */
+/*   Updated: 2021/11/04 15:08:58 by mdegraeu         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-t_list	*ft_init(int ac, char **av)
+void	*ft_calloc(size_t count, size_t size)
 {
-	int		i;
-	t_list	*ptr;
-	t_list	*new;
+	char	*mem;
 
-	i = 0;
-	ptr = NULL;
-	while (i < ac)
-	{
-		new = ft_lstnew(ft_atoi(av[i]));
-		ft_lstadd_back(&ptr, new);
-		i++;
-	}
-	return (ptr);
+	mem = malloc(size * count);
+	if (!mem)
+		return (NULL);
+	ft_bzero(mem, size * count);
+	return (mem);
 }
