@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 12:21:51 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/01/03 17:27:02 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/01/05 12:59:29 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_sort(t_list **alst, t_list **blst, int ac)
 			ft_stackfree(alst);
 			ft_stackfree(blst);
 			write(1, "Error malloc\n", 13);
-			//return (0);
 		}
 	}
 	else
@@ -58,11 +57,13 @@ void	ft_sort_b(t_list **alst, t_list **blst)
 
 void	ft_sort_a(t_list **alst, t_list **blst)
 {
-	(void)blst;
-	if (ft_lstsize(*alst) == 3)
-		ft_sort_three(alst);
-	if (ft_lstsize(*alst) == 4)
-		ft_sort_four(alst);
-	if (ft_lstsize(*alst) == 5 || ft_lstsize(*alst) == 6)
-		ft_sort_six(alst, blst);
+	if (!ft_check_a(*alst))
+	{
+		if (ft_lstsize(*alst) <= 3)
+			ft_sort_three(alst);
+		if (ft_lstsize(*alst) == 4)
+			ft_sort_four(alst);
+		if (ft_lstsize(*alst) == 5 || ft_lstsize(*alst) == 6)
+			ft_sort_six(alst, blst);
+	}
 }

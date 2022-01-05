@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 11:12:00 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/01/03 17:26:43 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/01/05 11:59:53 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ int	main(int ac, char **av)
 		stack_a = ft_init(ac - 1, &av[1]);
 	ft_sort(&stack_a, &stack_b, ac);
 	ft_stackfree(&stack_a);
+	ft_stackfree(&stack_b);
 	return (0);
 }

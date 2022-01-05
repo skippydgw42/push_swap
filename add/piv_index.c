@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 12:41:11 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/01/03 16:39:43 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/01/05 13:56:36 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,12 @@ long	ft_pivot(long *tab, int size, int ac)
 	if (ac > 400)
 		div = 50;
 	if (size <= 5)
+	{
+		free (tab);
 		return (2147483649);
+	}
 	if (size <= 25)
-		while (size - div <= 5)
+		while (size - div < 5)
 			div--;
 	ret = tab[div];
 	free (tab);
