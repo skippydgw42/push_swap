@@ -16,7 +16,7 @@ void	ft_sort(t_list **alst, t_list **blst, int ac)
 {
 	int	ret;
 
-	if (ft_lstsize(*alst) > 5)
+	if (ft_lstsize(*alst) > 6)
 	{
 		ret = ft_solver(alst, blst, ac - 1, ac);
 		if (ret == 0)
@@ -29,10 +29,6 @@ void	ft_sort(t_list **alst, t_list **blst, int ac)
 	}
 	else
 		ft_sort_a(alst, blst);
-	//ft_stackfree(alst);
-	//probleme here
-	write(1, "ICI\n", 4);
-	//return (1);
 }
 
 void	ft_sort_b(t_list **alst, t_list **blst)
@@ -67,6 +63,6 @@ void	ft_sort_a(t_list **alst, t_list **blst)
 		ft_sort_three(alst);
 	if (ft_lstsize(*alst) == 4)
 		ft_sort_four(alst);
-	if (ft_lstsize(*alst) > 4)
+	if (ft_lstsize(*alst) == 5 || ft_lstsize(*alst) == 6)
 		ft_sort_six(alst, blst);
 }

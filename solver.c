@@ -28,8 +28,6 @@ int	ft_solver(t_list **alst, t_list **blst, long pivot, int ac)
 		if ((*alst)->content == 2147483649)
 			return (0);
 	}
-	while (!ft_check_a(*alst))
-		ft_sort_a(alst, blst);
 	while (!((*blst)->content == ft_max(*blst)))
 	{
 		if (ft_direction(blst, ft_max(*blst)))
@@ -37,5 +35,7 @@ int	ft_solver(t_list **alst, t_list **blst, long pivot, int ac)
 		else
 			ft_rrb(blst);
 	}
+	while (!ft_check_a(*alst))
+		ft_sort_a(alst, blst);
 	return (1);
 }

@@ -21,7 +21,7 @@ void    ft_sort_three(t_list **alst)
         else if ((*alst)->content == ft_min(*alst))
             ft_sa(alst);
         else if ((*alst)->next->content == ft_max(*alst))
-                ft_ra(alst);
+            ft_ra(alst);
         else
             ft_sa(alst);
     }
@@ -49,15 +49,10 @@ void    ft_sort_four(t_list **alst)
 
 void    ft_sort_six(t_list **alst, t_list **blst)
 {
-    while (!ft_check_a(*alst))
-    {
         if ((*alst)->content == ft_max(*alst) && ft_check_a((*alst)->next))
             ft_ra(alst);
         else if ((*alst)->content > (*alst)->next->content)
             ft_sa(alst);
-        //=============//
-        ft_print(*alst);
-        ft_print(*blst);
         while (ft_lstsize(*alst) > 4)
         {
             while ((*alst)->content != ft_min(*alst))
@@ -70,9 +65,6 @@ void    ft_sort_six(t_list **alst, t_list **blst)
                     ft_rra(alst);
             }
             ft_pb(alst, blst);
-            //===========//
-            ft_print(*alst);
-            ft_print(*blst);
         }
         if (ft_lstsize(*alst) == 4)
         {
@@ -80,8 +72,4 @@ void    ft_sort_six(t_list **alst, t_list **blst)
             while (ft_lstsize(*blst) > 0)
                 ft_pa(alst, blst);
         }
-        //===========//
-        ft_print(*alst);
-        ft_print(*blst);
-    }
 }
