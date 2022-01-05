@@ -6,7 +6,7 @@
 /*   By: mdegraeu <mdegraeu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 11:10:29 by mdegraeu          #+#    #+#             */
-/*   Updated: 2022/01/05 12:03:42 by mdegraeu         ###   ########.fr       */
+/*   Updated: 2022/01/05 17:14:58 by mdegraeu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	ft_digit_err(char **str, int l)
 		j = 0;
 		while (str[i][j])
 		{
-			if (!ft_isdigit(str[i][j]))
+			if (!ft_isdigit(str[i][j]) && str[i][0] != '-')
 				return (0);
 			j++;
 		}
